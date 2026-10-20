@@ -1,0 +1,51 @@
+flowchart TB
+    subgraph MAIN["Stomach Go｜內外圈共同參與"]
+        direction LR
+        subgraph INNER["① 內圈：操作與瞄準"]
+            direction TB
+            I1["內圈玩家<br/>右 Joy-Con 陀螺儀"]
+            I2["BetterJoy v7.1<br/>濾波 IMU → 滑鼠移動"]
+            I3["Unity：JoyConCameraLook<br/>Mouse X/Y → 死區與靈敏度<br/>角度限制 → SmoothDamp"]
+            I4["旋轉攝影機<br/>改變觀看與瞄準方向"]
+            I5["左 Joy-Con ZL<br/>使用者設定：映射滑鼠左鍵"]
+            I6["射擊操作<br/>目前專案未找到實作腳本"]
+            I1 --> I2 --> I3 --> I4
+            I5 -.-> I6
+        end
+
+        subgraph OUTER["② 外圈：手機施加干擾"]
+            direction TB
+            O1["外圈玩家<br/>開啟手機單頁網頁"]
+            O2["app.js<br/>檢查遊戲在線、場次及冷卻"]
+            O3["Firebase Web SDK<br/>push + set 寫入指令"]
+            O4[("Firebase：commands<br/>type / amount / sessionId / time")]
+            O5["Unity：FirebaseCommandManager<br/>ChildAdded → 場次檢查與去重<br/>ConcurrentQueue → Update 執行"]
+            O6["ADD_VIRUS<br/>生成一隻病毒並追蹤玩家"]
+            O7["OBSCURE_VISION<br/>PlayEffect：胃液遮擋畫面"]
+            O1 --> O2 --> O3 --> O4 --> O5
+            O5 --> O6
+            O5 --> O7
+        end
+    end
+
+    I4 --> PLAY
+    O6 --> PLAY
+    O7 --> PLAY
+    PLAY["③ 共同作用於同一場 Unity 遊戲<br/>內圈控制觀看方向；外圈增加病毒與遮擋視野"]
+    PLAY --> SCREEN["電腦顯示器<br/>呈現內圈操作與外圈干擾的結果"]
+
+    subgraph STATUS["④ 在線回饋：網頁何時可以操作"]
+        direction LR
+        S1["Unity<br/>GUID 場次編號＋HTTP PUT 心跳"]
+        S2[("Firebase：gameStatus<br/>sessionId / lastSeen")]
+        S3["網頁 onValue 同步<br/>心跳有效且有連線才開放按鈕<br/>逾時約 15 秒停用"]
+        S1 --> S2 --> S3
+    end
+
+    subgraph SUPPORT["⑤ 支援模組與獨立回饋"]
+        direction LR
+        P1["Unity 場景<br/>自動前進 → A/B/C 地圖循環<br/>絨毛與殘渣物件池 → 隨機配置"]
+        P2["Unity 震動<br/>XInput A/B 按鍵 → XInputSetState<br/>由虛擬控制器／BetterJoy 傳回"]
+        P3["網頁本機視差<br/>手機方向感測 → 平滑處理<br/>CSS 透視，不傳到 Unity"]
+        P4["網頁觀眾管理<br/>participants＋localStorage<br/>在線人數、活動更新、斷線移除"]
+    end

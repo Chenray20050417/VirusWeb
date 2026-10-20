@@ -1,0 +1,311 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+
+    margin: 0;
+touch-action: manipulation;
+    height: 100vh;
+    height: 100dvh;
+
+    background: #490a21;
+    isolation: isolate;
+    overflow: hidden;
+
+    color: white;
+
+    font-family:
+        Arial,
+        "Microsoft JhengHei",
+        sans-serif;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+}
+button,
+.action-card {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+}
+/* Safari 快速連點優化 */
+.action-card {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.action-card img,
+.action-card span {
+    pointer-events: none;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(4px, 1vh, 8px);
+
+    width: 100%;
+
+    max-width: 500px;
+
+    text-align: center;
+
+    padding: max(14px, env(safe-area-inset-top))
+        max(24px, env(safe-area-inset-right))
+        max(10px, env(safe-area-inset-bottom))
+        max(24px, env(safe-area-inset-left));
+
+}
+
+
+.brand {
+    flex-shrink: 0;
+    margin: 0;
+    transform: perspective(550px) translate3d(var(--logo-x, 0px), var(--logo-y, 0px), 0)
+        rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+}
+
+.brand-logo {
+    display: block;
+    width: 100%;
+    height: min(14dvh, 140px);
+    object-fit: contain;
+}
+
+
+.room {
+
+    color: #aaa;
+
+    font-size: clamp(12px, 2.2vh, 16px);
+
+}
+
+
+.online {
+    font-size: clamp(12px, 2vh, 15px);
+}
+
+#gameStatus {
+    color: #ffd4e5;
+    font-size: clamp(12px, 2vh, 15px);
+}
+
+.actions {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: clamp(4px, 1vh, 10px);
+}
+
+.action-card {
+    transform: perspective(550px) translate3d(var(--card-x, 0px), var(--card-y, 0px), 0)
+        rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(var(--press-scale, 1));
+    --glow: #ff2875;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 0;
+    height: 100%;
+    padding: clamp(6px, 1.8vh, 18px) 18px clamp(6px, 1.8vh, 18px) 10px;
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.action-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: url("assets/images/bt_image.png") center / 100% 100% no-repeat;
+    mix-blend-mode: screen;
+}
+
+.acid {
+    --glow: #ffdc28;
+}
+
+.acid::before {
+    filter: hue-rotate(65deg);
+}
+
+.crosshair {
+    --glow: #f22bff;
+}
+
+.crosshair::before {
+    filter: hue-rotate(-45deg);
+}
+
+.action-icon {
+    transform: translate3d(var(--icon-x, 0px), var(--icon-y, 0px), 0);
+    width: 42%;
+    height: 100%;
+    max-height: 140px;
+    min-height: 0;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+.action-copy {
+    flex: 1;
+    min-width: 0;
+}
+
+.action-title {
+    display: block;
+    font-size: clamp(18px, min(6vw, 4.2vh), 32px);
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--glow);
+}
+
+.action-description {
+    display: block;
+    margin-top: clamp(3px, 1vh, 8px);
+    font-size: clamp(11px, min(3.4vw, 2.3vh), 17px);
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.action-card[aria-disabled="true"] {
+    cursor: default;
+}
+
+.action-card:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.action-card:focus-visible {
+    outline: 2px solid var(--glow);
+    outline-offset: 2px;
+}
+
+
+.action-card:not(:disabled):not([aria-disabled="true"]):active {
+
+    --press-scale: 0.97;
+
+}
+
+
+#message {
+
+    margin-top: 0;
+
+    font-size: clamp(12px, 2.2vh, 16px);
+
+    color: #ccc;
+
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -40px;
+    z-index: -1;
+    pointer-events: none;
+    background: url("assets/images/低多邊形猩紅水晶隧道.png") center / cover no-repeat;
+    transform: translate3d(var(--background-x, 0px), var(--background-y, 0px), 0);
+}
+
+.motion-controls {
+    flex-shrink: 0;
+    margin-top: 0;
+}
+
+.motion-controls button {
+    padding: 6px 10px;
+    margin: 2px;
+    border: 1px solid #ff76ab;
+    border-radius: 8px;
+    background: #370b25cc;
+    color: white;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.motion-controls button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+#motionStatus {
+    margin: 4px 0 0;
+    color: #ffd4e5;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .container {
+        max-width: 800px;
+        gap: 3px;
+    }
+
+    .brand-logo {
+        height: 12dvh;
+    }
+
+    .actions {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: minmax(0, 1fr);
+    }
+
+    .action-card {
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px 12px;
+        text-align: center;
+    }
+
+    .action-icon {
+        width: 70%;
+        height: 12dvh;
+        flex-shrink: 0;
+    }
+
+    .action-copy {
+        flex: 0;
+    }
+
+    .action-title {
+        font-size: 18px;
+    }
+
+    #motionStatus {
+        font-size: 11px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .brand, .action-card, .action-icon, body::before {
+        transform: none;
+    }
+}
+
+.round-info {padding: 8px; border: 1px solid #ff85c0; border-radius: 10px; background: #250e29c9; color: #fff1f8; font-weight: 800; font-size: clamp(13px,2.2vh,18px); flex-shrink:0;}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>Stomach Go</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+
+</head>
+
+<body>
+
+
+    <!-- V2 觀眾註冊（不更動原本的遊戲美術） -->
+    <section id="profileOverlay" class="profile-overlay" aria-label="建立外圈玩家身分">
+      <div class="profile-panel">
+        <h2>STOMACH GO</h2>
+        <p>建立外圈玩家身分</p>
+        <label class="profile-label">選擇頭貼</label>
+        <div id="profileAvatarOptions" class="profile-avatar-grid" role="group" aria-label="選擇頭貼"></div>
+        <label class="profile-label" for="profileName">你的暱稱（1–12 字）</label>
+        <input id="profileName" maxlength="12" autocomplete="nickname" placeholder="輸入玩家名稱">
+        <button id="profileConfirm" type="button">確認加入</button>
+        <p id="profileFeedback" role="status">請選擇頭貼並輸入名稱</p>
+      </div>
+    </section>
+
+    <div class="container">
+
+        <h1 class="brand">
+            <img class="brand-logo"
+                 src="assets/images/Stomach%20Go%20logo.png"
+                 alt="Stomach Go"
+                 width="2172"
+                 height="724">
+        </h1>
+
+        <div class="room">
+            ROOM：<span id="roomID">AB123</span>
+        </div>
+
+
+        <!-- 在線人數 -->
+        <div class="online">
+
+            👥 目前在線：
+            <span id="participantCount">0</span> 人
+
+        </div>
+
+        <div id="gameStatus" role="status">等待遊戲啟動</div>
+
+
+        <div id="roundInfo" class="round-info" role="status">等待回合資料…</div>
+        <div class="actions">
+            <button class="action-card virus" id="virusButton" type="button" disabled>
+                <img class="action-icon" src="assets/images/buffup_logo.png" alt="">
+                <span class="action-copy">
+                    <span class="action-title">病毒狂暴</span>
+                    <span class="action-description">病毒移動速度提升</span>
+                </span>
+            </button>
+
+            <button class="action-card acid" id="acidButton" type="button" disabled>
+                <img class="action-icon" src="assets/images/Vision-obscuring%20foam.png" alt="">
+                <span class="action-copy">
+                    <span class="action-title">胃液遮擋</span>
+                    <span class="action-description">遮蔽玩家部分視野</span>
+                </span>
+            </button>
+
+            <button class="action-card crosshair" id="crosshairButton" type="button" disabled>
+                <img class="action-icon" src="assets/images/Crosshair%20Interference.png" alt="">
+                <span class="action-copy">
+                    <span class="action-title">準心干擾</span>
+                    <span class="action-description">準心晃動、偏移</span>
+                </span>
+            </button>
+        </div>
+
+
+        <div id="message">
+            等待操作...
+        </div>
+
+        <div class="motion-controls">
+            <button id="motionToggle" type="button" aria-pressed="false">啟用 3D 傾斜效果</button>
+            <button id="motionCalibrate" type="button" hidden>重設角度</button>
+            <p id="motionStatus" role="status">啟用後，輕輕傾斜手機即可體驗。</p>
+        </div>
+
+    </div>
+
+
+    <script src="tilt.js" defer></script>
+    <script type="module" src="vote-app.js"></script>
+
+
+
+</body>
+
+</html>
