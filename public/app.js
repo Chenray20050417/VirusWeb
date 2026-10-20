@@ -23,15 +23,11 @@ import {
 // 1. Firebase 設定
 // ======================================================
 
-const firebaseConfig = {
-    apiKey: "AIzaSyB5Z2xqC1xpy7lFshctHCZ6RMX3HeLjrB0",
-    authDomain: "virusgame-c7baa.firebaseapp.com",
-    databaseURL: "https://virusgame-c7baa-default-rtdb.firebaseio.com",
-    projectId: "virusgame-c7baa",
-    storageBucket: "virusgame-c7baa.firebasestorage.app",
-    messagingSenderId: "317939129488",
-    appId: "1:317939129488:web:677930a67ab1997c0a4c15"
-};
+import { firebaseConfig } from "./firebase-config.js";
+
+
+
+
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);

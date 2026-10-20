@@ -1,7 +1,7 @@
 // 第 2 版第一階段：頭貼/暱稱資料。頭貼目前為占位符，正式請換成自製圖片。
 import { initializeApp, getApps } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js';
 import { getDatabase, ref, update } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js';
-const config = { apiKey: 'AIzaSyB5Z2xqC1xpy7lFshctHCZ6RMX3HeLjrB0', authDomain: 'virusgame-c7baa.firebaseapp.com', databaseURL: 'https://virusgame-c7baa-default-rtdb.firebaseio.com', projectId: 'virusgame-c7baa', appId: '1:317939129488:web:677930a67ab1997c0a4c15' };
+import { firebaseConfig as config } from "./firebase-config.js";
 const firebaseApp = getApps()[0] || initializeApp(config);
 const db = getDatabase(firebaseApp);
 const roomId = 'ab123';

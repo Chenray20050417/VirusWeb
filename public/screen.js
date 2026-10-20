@@ -2,15 +2,9 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js';
 import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js';
 
-const firebaseConfig = {
-  apiKey: 'AIzaSyB5Z2xqC1xpy7lFshctHCZ6RMX3HeLjrB0',
-  authDomain: 'virusgame-c7baa.firebaseapp.com',
-  databaseURL: 'https://virusgame-c7baa-default-rtdb.firebaseio.com',
-  projectId: 'virusgame-c7baa',
-  storageBucket: 'virusgame-c7baa.firebasestorage.app',
-  messagingSenderId: '317939129488',
-  appId: '1:317939129488:web:677930a67ab1997c0a4c15'
-};
+import { firebaseConfig } from "./firebase-config.js";
+
+
 const db = getDatabase(initializeApp(firebaseConfig));
 const roomPath = 'rooms/ab123';
 const $ = id => document.getElementById(id);
