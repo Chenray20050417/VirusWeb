@@ -1,45 +1,76 @@
 <!doctype html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Stomach GO｜外圈干擾戰況</title>
   <link rel="stylesheet" href="screen.css?v=20261019-qr-layout-2">
 </head>
+
 <body>
   <div class="screen-layout">
     <aside class="qr-panel qr-left" aria-label="左側加入遊戲 QR Code">
       <h2>掃碼加入遊戲</h2>
-      <object class="qr-code" data="assets/images/screenqrcode.svg" type="image/svg+xml" aria-label="掃描 QR Code 加入外圈互動" tabindex="-1"></object>
+      <object class="qr-code" data="assets/images/screenqrcode.svg" type="image/svg+xml" aria-label="掃描 QR Code 加入外圈互動"
+        tabindex="-1"></object>
       <p>拿起手機，一起參與！</p>
     </aside>
-  <main class="stage">
-    <header class="header">
-      <div><h1>STOMACH <span>GO</span></h1><p>外圈干擾競賽・ROOM AB123</p></div>
-      <div class="connection" id="connection">連線中…</div>
-    </header>
-    <section class="headline">
-      <div><span class="hint">目前階段</span><h2 id="phase">準備連線</h2></div>
-      <div class="timer"><span class="hint">階段剩餘</span><strong id="time">--:--</strong></div>
-      <div><span class="hint">第幾輪</span><strong id="round">--</strong></div>
-    </section>
-    <section class="scores" aria-label="三種干擾點擊數">
-      <div class="score"><div class="scorehead"><span>🟡 胃液遮擋</span><strong><span id="acid">0</span> 次</strong></div><div class="track"><div id="acidBar" class="fill yellow"></div></div></div>
-      <div class="score"><div class="scorehead"><span>🦠 病毒狂暴</span><strong><span id="virus">0</span> 次</strong></div><div class="track"><div id="virusBar" class="fill green"></div></div></div>
-      <div class="score"><div class="scorehead"><span>🎯 準心干擾</span><strong><span id="aim">0</span> 次</strong></div><div class="track"><div id="aimBar" class="fill purple"></div></div></div>
-    </section>
-    <section class="bottom">
-      <article><span class="hint">本輪領先 / 勝出干擾</span><h3 id="winner">等待資料</h3><p id="totalClicks">目前累積 0 次點擊</p></article>
-      <article><span class="hint">🏆 本輪 MVP</span><h3 id="mvp">等待結算</h3><p id="mvpClicks">勝出項目個人有效點擊數最高者</p></article>
-    </section>
-    <footer id="note">投影頁面僅供觀看，不接受點擊操作。</footer>
-  </main>
+    <main class="stage">
+      <header class="header">
+        <div>
+          <h1>STOMACH <span>GO</span></h1>
+          <p>外圈干擾競賽・ROOM AB123</p>
+        </div>
+        <div class="connection" id="connection">連線中…</div>
+      </header>
+      <section class="headline">
+        <div><span class="hint">目前階段</span>
+          <h2 id="phase">準備連線</h2>
+        </div>
+        <div class="timer"><span class="hint">階段剩餘</span><strong id="time">--:--</strong></div>
+        <div><span class="hint">第幾輪</span><strong id="round">--</strong></div>
+      </section>
+      <section class="scores" aria-label="三種干擾點擊數">
+        <div class="score">
+          <div class="scorehead"><span>🟡 胃液遮擋</span><strong><span id="acid">0</span> 次</strong></div>
+          <div class="track">
+            <div id="acidBar" class="fill yellow"></div>
+          </div>
+        </div>
+        <div class="score">
+          <div class="scorehead"><span>🦠 病毒狂暴</span><strong><span id="virus">0</span> 次</strong></div>
+          <div class="track">
+            <div id="virusBar" class="fill green"></div>
+          </div>
+        </div>
+        <div class="score">
+          <div class="scorehead"><span>🎯 準心干擾</span><strong><span id="aim">0</span> 次</strong></div>
+          <div class="track">
+            <div id="aimBar" class="fill purple"></div>
+          </div>
+        </div>
+      </section>
+      <section class="bottom">
+        <article><span class="hint">本輪領先 / 勝出干擾</span>
+          <h3 id="winner">等待資料</h3>
+          <p id="totalClicks">目前累積 0 次點擊</p>
+        </article>
+        <article><span class="hint">🏆 本輪 MVP</span>
+          <h3 id="mvp">等待結算</h3>
+          <p id="mvpClicks">勝出項目個人有效點擊數最高者</p>
+        </article>
+      </section>
+      <footer id="note">投影頁面僅供觀看，不接受點擊操作。</footer>
+    </main>
     <aside class="qr-panel qr-right" aria-label="右側加入遊戲 QR Code">
       <h2>掃碼加入遊戲</h2>
-      <object class="qr-code" data="assets/images/screenqrcode.svg" type="image/svg+xml" aria-label="掃描 QR Code 加入外圈互動" tabindex="-1"></object>
+      <object class="qr-code" data="assets/images/screenqrcode.svg" type="image/svg+xml" aria-label="掃描 QR Code 加入外圈互動"
+        tabindex="-1"></object>
       <p>拿起手機，一起參與！</p>
     </aside>
   </div>
   <script type="module" src="screen.js"></script>
 </body>
+
 </html>
